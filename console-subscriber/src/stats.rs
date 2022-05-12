@@ -528,7 +528,7 @@ impl ToProto for PollStats {
             last_poll_ended: timestamps
                 .last_poll_ended
                 .map(|at| base_time.to_timestamp(at)),
-            busy_time: Some(timestamps.busy_time.into()),
+            busy_time: timestamps.busy_time.try_into().ok(),
         }
     }
 }
